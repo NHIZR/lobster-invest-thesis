@@ -138,3 +138,71 @@ Use the agent's `web_fetch` tool to pull full content from:
 - **Etherscan free:** 5 calls/sec, 100k calls/day.
 
 When rate-limited, fall back to web_fetch on the provider's website.
+
+---
+
+## Additional Sources
+
+### Dune Analytics
+
+Community-built SQL dashboards for on-chain data across EVM chains, Solana, and more.
+
+- **URL:** https://dune.com
+- **API:** https://dune.com/docs/api/ (free tier: 2,500 credits/month)
+- **Best for:** Custom on-chain queries, protocol-specific metrics, whale tracking, DEX volume
+
+```bash
+# Execute a saved query
+curl -s "https://api.dune.com/api/v1/query/{query_id}/results" \
+  -H "X-DUNE-API-KEY: {key}"
+```
+
+### Token Terminal
+
+Fundamental financial metrics for crypto protocols — revenue, earnings, P/S, P/E ratios.
+
+- **URL:** https://tokenterminal.com
+- **API:** https://docs.tokenterminal.com (free tier available)
+- **Best for:** Protocol revenue comparisons, financial multiples, growth metrics
+
+```bash
+# Protocol financials
+curl -s "https://api.tokenterminal.com/v2/projects/{project_id}" \
+  -H "Authorization: Bearer {key}"
+```
+
+### TradingView
+
+Charting platform with technical analysis tools. No REST API, but useful for manual chart review and embedding.
+
+- **URL:** https://www.tradingview.com
+- **Best for:** Technical analysis, chart patterns, indicator overlays, community ideas
+- **Usage:** Open `https://www.tradingview.com/chart/?symbol={EXCHANGE}:{TICKER}` via browser for interactive charts
+
+---
+
+## Technical Snapshot Reference
+
+When including a Technical Snapshot in reports, cover these indicators:
+
+- **RSI (14):** overbought (>70) / oversold (<30) / neutral
+- **Price vs 50MA and 200MA:** trend direction and distance
+- **Key support and resistance levels:** 2 each, from recent price action
+- **Volume trend:** expanding, contracting, flat
+
+**Crypto additions:** Active addresses, exchange net flows, whale wallet changes.
+
+Sources: TradingView for charts, CoinGecko for crypto price data, DeFiLlama for on-chain metrics.
+
+---
+
+## Sentiment Pulse Reference
+
+Quick scan of market mood for reports:
+
+- **Social media sentiment:** fear ↔ greed spectrum
+- **Discussion volume:** cold / normal / hot / overheated
+- **Institutional positioning:** accumulating / flat / distributing
+- **Sentiment-fundamental alignment:** yes/no + why
+
+Sources: Twitter/X search, Reddit (r/wallstreetbets, r/cryptocurrency), governance forums, on-chain flow data from Etherscan/DeFiLlama.

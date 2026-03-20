@@ -20,8 +20,6 @@ A structured investment research framework that produces actionable memos with k
 
 **Core principle**: Good analysis is falsifiable. Great analysis tells you exactly when you're wrong.
 
-**Live demo:** 8+ investment reports generated using this framework at [@lobster_kk](https://x.com/lobster_kk) and [kkek.com](https://kkek.com).
-
 ---
 
 ## Quick Start
@@ -81,7 +79,7 @@ Pick 2-3 that fit the target. Using all six is a sign you don't know what matter
 
 Before writing anything, answer: **Does this target relate to my Edge?**
 
-Your Edge is defined in `config.json` → `edge_definitions`. If you haven't defined one yet, see `references/edge-framework.md` for a template.
+Your Edge is defined in `config.json` → `edge_definitions`. If you haven't defined one yet, see `references/edge-framework.md`.
 
 ```
 Edge match: [Yes — which edge / No]
@@ -97,146 +95,39 @@ If edge matches → Flag it in TL;DR
 
 ### Step 2: Stress-Test (15 min)
 
-For each force, map three scenarios:
-- Bull case (90th percentile)
-- Bear case (10th percentile)
-- Base case (your view)
-
-Probability-weight them.
+For each force, map three scenarios (bull/bear/base). Probability-weight them.
 
 ### Step 3: Write The Memo (30 min)
 
-Full template below. Detailed execution guides in `references/`.
-
----
-
-## Report Template
-
-```markdown
-# $TICKER: [Thesis in 5-7 words]
-
-## TL;DR (4 bullets)
-- Thesis: [One sentence]
-- Variant: [Market is wrong because...]
-- Action: [Long/Short/Pass at $X]
-- Kill: [Exit if Y happens]
-
-## The Setup
-- What this is
-- Why it matters now
-- Your 1-3 key forces
-
-## The Variant View
-- What market believes
-- Why that's wrong
-- Evidence: [Link 1](URL), [Link 2](URL), [Link 3](URL)
-
-## Valuation
-- Method 1: [X] → Fair value $Y
-- Method 2: [X] → Fair value $Z
-- Sensitivity table
-- IRR: X% base, Y% bull, Z% bear
-
-## Catalysts
-- [Event] → [Expected outcome] → [Timeline]
-
-## ⚔️ Devil's Advocate
-- Burry says: [Contrarian attack]
-- Graham says: [Safety margin challenge]
-- Druckenmiller says: [Macro/cycle risk]
-- Strongest bear case: [Synthesis]
-- My response: [Why I hold / conditions for surrender]
-
-## 📊 Technical Snapshot
-- RSI / Moving averages / Support-resistance / Volume
-
-## 🎭 Sentiment Pulse
-- Social sentiment / Discussion heat / Institutional flow
-
-## Risks & Kill Conditions
-- Risk: [X] | Kill: If [Y], exit
-- Risk: [X] | Kill: If [Y], exit
-
-## Position Sizing
-- Entry / Target / Stop / Size / Rationale
-
-## Bottom Line
-[One paragraph. What's the bet?]
-```
-
----
-
-## Output Requirements
-
-### Non-Negotiable
-1. **Thesis in 2 sentences** — What and why
-2. **Variant view** — What does market get wrong?
-3. **1-3 key forces** — Only what moves the needle
-4. **2+ valuation methods** — With sensitivity ranges
-5. **Kill conditions** — Exact triggers for exit
-6. **Action price** — Where you pull the trigger
-
-### Format Rules
-- Bullet points for narrative. Tables only for numbers (valuations, financials, scenarios).
-- `[Sources as links](URL)` — Every claim needs a link.
-- No throat-clearing ("In this memo we examine..."). Start with the point.
-- Active voice. Concrete numbers. Ranges OK, vagueness not.
-
-### Length
-- Executive Summary: 300-500 chars
-- Full Memo: 8,000-15,000 chars
-- Hard max: 20,000 chars
-
----
-
-## Evidence Standards
-
-### Source Hierarchy
-
-**Tier 1 (Need 3+):** CEO interviews, earnings transcripts, on-chain data, GitHub activity
-**Tier 2 (Support):** Glassdoor reviews, job postings, patent filings, customer reviews
-**Tier 3 (Context):** Analyst reports, news articles, social sentiment
-
-**Hard rule**: No fabricated quotes. If you don't have the source, say so.
+See `references/report-template.md` for the full template and output requirements.
 
 ---
 
 ## Devil's Advocate
 
-**Required in every report.** Write the thesis, then switch sides and attack it from three angles. Full guide in `references/devils-advocate.md`.
+**Required in every report.** Full guide in `references/devils-advocate.md`.
 
 1. **Burry (Contrarian)** — Where is the crowd wrong? What downside is nobody pricing?
 2. **Graham (Safety Margin)** — Conservative liquidation value? Management selling at highs?
-3. **Druckenmiller (Macro Cycle)** — Where in the cycle? Liquidity helping or hurting? First to crash or last?
+3. **Druckenmiller (Macro Cycle)** — Where in the cycle? Liquidity helping or hurting?
 
 ---
 
-## Technical Snapshot
+## Evidence Standards
 
-Include when price data is available. Not prediction — just current positioning.
-
-- RSI (14): overbought (>70) / oversold (<30) / neutral
-- Price vs 50MA and 200MA
-- Key support and resistance levels (2 each)
-- Volume trend: expanding, contracting, flat
-
-**Crypto additions:** Active addresses, exchange net flows, whale wallet changes.
+Every claim needs a link. See `references/evidence-standards.md` for the full source hierarchy and verification checklist.
 
 ---
 
-## Sentiment Pulse
+## Technical Snapshot & Sentiment Pulse
 
-Quick scan of market mood:
-- Social media sentiment (fear ↔ greed spectrum)
-- Discussion volume (cold / normal / hot / overheated)
-- Institutional positioning (accumulating / flat / distributing)
-- Sentiment-fundamental alignment (yes/no + why)
+Include in every report when data is available. See `references/data-sources.md` for indicator definitions and data sources.
 
 ---
 
 ## Free Data Sources
 
-No API keys needed for most of these. Full list with code snippets in `references/data-sources.md`.
+No API keys needed for most. Full list with code snippets in `references/data-sources.md`.
 
 | Source | Covers | Rate Limit |
 |--------|--------|------------|
@@ -245,6 +136,9 @@ No API keys needed for most of these. Full list with code snippets in `reference
 | Yahoo Finance | Stock quotes, charts | Unofficial, reliable |
 | StockAnalysis.com | Financials, fundamentals | Web scraping |
 | Etherscan | On-chain token data | 5 calls/sec free |
+| Dune Analytics | Custom on-chain queries | 2,500 credits/month free |
+| Token Terminal | Protocol financials | Free tier available |
+| TradingView | Technical charts | Browser-based |
 
 ---
 
@@ -304,9 +198,7 @@ Before finalizing any report. See `references/red-team-checklist.md`.
 - [ ] Kill conditions specific and measurable?
 - [ ] What evidence would prove me wrong?
 - [ ] Who's on the other side of this trade?
-- [ ] Am I anchoring on recent news?
 - [ ] Devil's Advocate section complete?
-- [ ] Technical Snapshot included (if data available)?
 - [ ] All claims have source links?
 
 ---
@@ -325,22 +217,7 @@ If you can't form conviction in 90 minutes, pass.
 
 ## File Structure
 
-```
-lobster-investment-research/
-├── SKILL.md                 ← This file
-├── config.example.json      ← Configuration template
-├── README.md                ← Install + quick start
-├── references/
-│   ├── six-lenses.md        ← Investment lens details
-│   ├── devils-advocate.md   ← Devil's Advocate execution guide
-│   ├── data-sources.md      ← Free API reference with code
-│   ├── edge-framework.md    ← How to define your Edge
-│   ├── example-report.md    ← Full sample report
-│   └── red-team-checklist.md
-└── scripts/
-    ├── setup.sh             ← First-time config
-    └── README.md            ← Script docs
-```
+See `README.md` for the full directory layout and installation instructions.
 
 ---
 
@@ -348,6 +225,5 @@ lobster-investment-research/
 
 - **Current**: 1.0.0
 - **Lineage**: Built from the private research framework behind [@lobster_kk](https://x.com/lobster_kk)
-- **Optimized for**: Fast conviction, bullet-point clarity, source-backed claims
 
 **The bottom line**: Good research tells you what to buy. This framework tells you exactly when you're wrong.

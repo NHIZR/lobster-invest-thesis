@@ -15,7 +15,7 @@ Built for [OpenClaw](https://github.com/nicepkg/openclaw) and [Claude Code](http
 | Output | "Here are some considerations..." | Actionable memo with entry/exit/sizing |
 | Conviction | Hedged, vague, "it depends" | Takes a side, names kill conditions |
 | Debate | None | Devil's Advocate: 3 legendary investors attack your thesis |
-| Sources | Claims without links | Every claim needs a URL |
+| Sources | Claims without links | Source-backed — every claim linked |
 | Valuation | Skipped or hand-wavy | 2+ methods with sensitivity ranges |
 | Self-check | None | Red Team Checklist before every report |
 | Edge | Generic | Your personal Edge defined in config |
@@ -36,7 +36,7 @@ cp -r lobster-investment-research/ ~/.claude/skills/lobster-investment-research/
 
 ## Setup
 
-**Option A: Interactive**
+**Option A: Quick setup**
 
 ```bash
 chmod +x scripts/setup.sh && ./scripts/setup.sh
@@ -93,7 +93,7 @@ lobster-investment-research/
 │   ├── example-report.md    ← Full sample report (public data)
 │   └── red-team-checklist.md
 └── scripts/
-    ├── setup.sh             ← Interactive first-time setup
+    ├── setup.sh             ← Quick setup — copies config template
     └── README.md            ← Script documentation
 ```
 

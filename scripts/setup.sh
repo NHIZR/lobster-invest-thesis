@@ -1,6 +1,5 @@
 #!/bin/bash
-# Lobster Investment Research — First-time setup
-# Creates config.json from the example template
+# Lobster Investment Research — Quick setup — copies config template
 
 set -e
 

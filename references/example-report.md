@@ -67,9 +67,9 @@ Aave is the largest decentralized lending protocol across Ethereum, Polygon, Arb
 | Base | 20x | $10B TVL | $200 |
 | Bull | 30x | $15B TVL | $350 |
 
-**Base case IRR:** ~60% annualized (from $180 entry to $200 fair value within 6 months, plus potential for bull case).
+**Base case IRR:** ~23% annualized ($180 entry → $200 fair value in 6 months = 11.1% half-year return, annualized via (200/180)² − 1).
 
-Exceeds crypto long hurdle of 50%. Proceed.
+Below crypto long hurdle of 50% on base case alone. Bull case ($350) provides the upside optionality that justifies the position. Proceed with reduced sizing.
 
 ---
 
@@ -140,4 +140,4 @@ Exceeds crypto long hurdle of 50%. Proceed.
 
 ## Bottom Line
 
-Aave is the closest thing DeFi has to a blue-chip financial institution. Real revenue, dominant market share, multi-chain presence, and a stablecoin flywheel. The bear case is real — token holders have no legal claim on revenue, and a smart contract exploit could be catastrophic. But at 18x revenue with 60%+ IRR potential, the risk/reward skews long. Accumulate below $150, hold with a $140 stop, and exit if governance turns hostile or TVL breaks down structurally.
+Aave is the closest thing DeFi has to a blue-chip financial institution. Real revenue, dominant market share, multi-chain presence, and a stablecoin flywheel. The bear case is real — token holders have no legal claim on revenue, and a smart contract exploit could be catastrophic. But at 18x revenue with ~23% base-case IRR (and 95%+ bull-case IRR to $350), the risk/reward skews long. Accumulate below $150, hold with a $140 stop, and exit if governance turns hostile or TVL breaks down structurally.
