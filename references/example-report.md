@@ -67,7 +67,7 @@ Aave is the largest decentralized lending protocol across Ethereum, Polygon, Arb
 | Base | 20x | $10B TVL | $200 |
 | Bull | 30x | $15B TVL | $350 |
 
-**Base case IRR:** ~23% annualized ($180 entry → $200 fair value in 6 months = 11.1% half-year return, annualized via (200/180)² − 1).
+**Base case annualized return:** ~23% ($180 entry → $200 fair value in 6 months = 11.1% half-year return, annualized via (200/180)² − 1).
 
 Below crypto long hurdle of 50% on base case alone. Bull case ($350) provides the upside optionality that justifies the position. Proceed with reduced sizing.
 

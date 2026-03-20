@@ -13,7 +13,7 @@ If `config.json` already exists, the script exits without overwriting. Delete th
 
 ## fetch_data.py
 
-Data fetcher wrapping free APIs (DeFiLlama, CoinGecko, Yahoo Finance). No dependencies beyond Python 3 standard library.
+Data fetcher wrapping free APIs (DeFiLlama, CoinGecko, Yahoo Finance). No dependencies beyond Python 3.6+ standard library.
 
 ```bash
 python scripts/fetch_data.py defi aave          # DeFiLlama protocol data

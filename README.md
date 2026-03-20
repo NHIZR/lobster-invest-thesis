@@ -1,4 +1,4 @@
-# Lobster Investment Research 📊
+# Lobster Invest Thesis 📊
 
 A structured investment research framework for AI coding agents. Produces actionable memos with kill conditions, multi-perspective stress testing, and source-backed claims.
 
@@ -6,7 +6,7 @@ Built for [OpenClaw](https://github.com/nicepkg/openclaw) and [Claude Code](http
 
 ## What Makes This Different
 
-| Feature | Generic AI research | Lobster Investment Research |
+| Feature | Generic AI research | Lobster Invest Thesis |
 |---------|--------------------|-----------------------------|
 | Output | "Here are some considerations..." | Actionable memo with entry/exit/sizing |
 | Conviction | Hedged, vague, "it depends" | Takes a side, names kill conditions |
@@ -21,13 +21,13 @@ Built for [OpenClaw](https://github.com/nicepkg/openclaw) and [Claude Code](http
 ### OpenClaw
 
 ```bash
-cp -r lobster-investment-research/ ~/.openclaw/skills/lobster-investment-research/
+cp -r lobster-invest-thesis/ ~/.openclaw/skills/lobster-invest-thesis/
 ```
 
 ### Claude Code
 
 ```bash
-cp -r lobster-investment-research/ ~/.claude/skills/lobster-investment-research/
+cp -r lobster-invest-thesis/ ~/.claude/skills/lobster-invest-thesis/
 ```
 
 ## Setup
@@ -77,7 +77,7 @@ The agent picks the relevant lenses, checks your Edge, fetches live data, runs D
 ## File Structure
 
 ```
-lobster-investment-research/
+lobster-invest-thesis/
 ├── SKILL.md                 ← Main skill file (agent reads this)
 ├── config.example.json      ← Configuration template
 ├── README.md                ← This file

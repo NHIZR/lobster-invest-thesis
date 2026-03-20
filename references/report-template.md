@@ -68,7 +68,7 @@ Full template for investment research memos. Referenced from SKILL.md.
 
 ### Format Rules
 - Bullet points for narrative. Tables only for numbers (valuations, financials, scenarios).
-- `[Sources as links](URL)` — Every claim needs a link.
+- `[Sources as links](URL)` — Every claim needs a link. See `references/evidence-standards.md` for the full verification protocol.
 - No throat-clearing ("In this memo we examine..."). Start with the point.
 - Active voice. Concrete numbers. Ranges OK, vagueness not.
 

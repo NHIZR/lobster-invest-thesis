@@ -2,3 +2,9 @@ config.json
 node_modules/
 .DS_Store
 *.log
+__pycache__/
+*.pyc
+.env
+reports/
+*.swp
+*.swo

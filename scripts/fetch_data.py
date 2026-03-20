@@ -21,22 +21,30 @@ Examples:
 
 import json
 import sys
-import urllib.request
 import urllib.error
+import urllib.parse
+import urllib.request
 from typing import Any
 
 
-def fetch_json(url: str) -> Any:
+def fetch_json(url: str) -> dict[str, Any]:
     """Fetch JSON from a URL with a reasonable timeout."""
     req = urllib.request.Request(url, headers={"User-Agent": "LobsterResearch/1.0"})
     try:
         with urllib.request.urlopen(req, timeout=15) as resp:
-            return json.loads(resp.read().decode())
+            charset = resp.headers.get_content_charset("utf-8")
+            return json.loads(resp.read().decode(charset))
     except urllib.error.HTTPError as e:
-        print(f"HTTP Error {e.code}: {e.reason}", file=sys.stderr)
+        if e.code == 429:
+            print("Rate limited (HTTP 429). Wait before retrying.", file=sys.stderr)
+        else:
+            print(f"HTTP Error {e.code}: {e.reason}", file=sys.stderr)
         sys.exit(1)
     except urllib.error.URLError as e:
         print(f"Connection error: {e.reason}", file=sys.stderr)
+        sys.exit(1)
+    except json.JSONDecodeError as e:
+        print(f"Invalid JSON response: {e}", file=sys.stderr)
         sys.exit(1)
 
 
@@ -58,7 +66,7 @@ def defi_fees(slug: str) -> None:
     """Fetch DeFiLlama fees and revenue data."""
     data = fetch_json(f"https://api.llama.fi/summary/fees/{slug}")
     result = {
-        "name": slug,
+        "name": data.get("name", slug),
         "total_24h": data.get("total24h"),
         "total_7d": data.get("total7d"),
         "total_30d": data.get("total30d"),
@@ -67,7 +75,11 @@ def defi_fees(slug: str) -> None:
 
 
 def defi_yields(protocol: str) -> None:
-    """Fetch DeFiLlama yield pools for a protocol."""
+    """Fetch DeFiLlama yield pools for a protocol.
+
+    Note: This endpoint returns all pools across all protocols (~thousands of records).
+    No server-side filtering is available, so we filter client-side.
+    """
     data = fetch_json("https://yields.llama.fi/pools")
     pools = [
         {"pool": p.get("pool"), "tvl_usd": p.get("tvlUsd"), "apy": p.get("apy")}
@@ -80,10 +92,11 @@ def defi_yields(protocol: str) -> None:
 
 def crypto_coin(coin_id: str) -> None:
     """Fetch CoinGecko coin data (price, market cap, volume, supply)."""
-    data = fetch_json(
+    url = (
         f"https://api.coingecko.com/api/v3/coins/{coin_id}"
-        "?localization=false&tickers=false&community_data=false&developer_data=false"
+        f"?localization=false&tickers=false&community_data=false&developer_data=false"
     )
+    data = fetch_json(url)
     md = data.get("market_data", {})
     result = {
         "name": data.get("name"),
@@ -106,11 +119,20 @@ def crypto_coin(coin_id: str) -> None:
 
 def stock_quote(ticker: str) -> None:
     """Fetch Yahoo Finance quote data."""
-    data = fetch_json(
+    url = (
         f"https://query1.finance.yahoo.com/v8/finance/chart/{ticker}"
-        "?interval=1d&range=5d"
+        f"?interval=1d&range=5d"
     )
-    meta = data.get("chart", {}).get("result", [{}])[0].get("meta", {})
+    data = fetch_json(url)
+    chart = data.get("chart", {})
+    if chart.get("error"):
+        print(f"Yahoo Finance error: {chart['error']}", file=sys.stderr)
+        sys.exit(1)
+    results = chart.get("result") or []
+    if not results:
+        print(f"No data returned for ticker: {ticker}", file=sys.stderr)
+        sys.exit(1)
+    meta = results[0].get("meta", {})
     result = {
         "symbol": meta.get("symbol"),
         "price": meta.get("regularMarketPrice"),
@@ -122,9 +144,9 @@ def stock_quote(ticker: str) -> None:
     print(json.dumps(result, indent=2))
 
 
-COMMANDS = {
+COMMANDS: dict[str, tuple[str, Any]] = {
     "defi": ("protocol-slug", defi_protocol),
-    "crypto": ("coin-id", defi_protocol),
+    "crypto": ("coin-id", crypto_coin),
     "stock": ("TICKER", stock_quote),
     "fees": ("protocol-slug", defi_fees),
     "yields": ("protocol", defi_yields),
@@ -137,22 +159,15 @@ def main() -> None:
         sys.exit(1)
 
     cmd = sys.argv[1].lower()
-    arg = sys.argv[2]
+    arg = urllib.parse.quote(sys.argv[2], safe="")
 
-    if cmd == "defi":
-        defi_protocol(arg)
-    elif cmd == "crypto":
-        crypto_coin(arg)
-    elif cmd == "stock":
-        stock_quote(arg)
-    elif cmd == "fees":
-        defi_fees(arg)
-    elif cmd == "yields":
-        defi_yields(arg)
-    else:
+    if cmd not in COMMANDS:
         print(f"Unknown command: {cmd}")
         print(f"Available: {', '.join(COMMANDS.keys())}")
         sys.exit(1)
+
+    _, handler = COMMANDS[cmd]
+    handler(arg)
 
 
 if __name__ == "__main__":

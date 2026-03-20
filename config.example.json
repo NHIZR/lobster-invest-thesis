@@ -5,7 +5,8 @@
     {
       "name": "Your Edge Name",
       "description": "Describe the repeatable pattern where your analysis beats the market's default pricing. See references/edge-framework.md for guidance.",
-      "trigger": "Specific conditions that activate this edge"
+      "trigger": "Specific conditions that activate this edge",
+      "track_record": null
     }
   ],
   "report_path": "~/investment-research/reports/",

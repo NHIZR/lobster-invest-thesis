@@ -1,5 +1,5 @@
 ---
-name: lobster-investment-research
+name: lobster-invest-thesis
 description: "Structured investment research framework producing actionable memos with kill conditions, valuation, and Devil's Advocate debate. Use when analyzing stocks, crypto tokens, DeFi protocols, or any investment target. Triggers on: 'analyze $TICKER', 'should I buy', 'investment thesis', 'due diligence', 'deep dive on', 'research this stock/token', 'what do you think about $X as an investment', 'investment memo', or any request for investment analysis — even casual ones like 'is $X worth buying' or 'look into $TICKER for me'."
 metadata:
   trigger: "investment research, analyze $TICKER, deep dive, thesis, should I buy, investment memo, due diligence"
@@ -9,7 +9,7 @@ metadata:
     web_fetch: "URL fetching for source verification"
 ---
 
-# Lobster Investment Research
+# Lobster Invest Thesis
 
 Produce actionable investment memos with kill conditions. Cover stocks, crypto, DeFi protocols, and pre-token projects.
 
