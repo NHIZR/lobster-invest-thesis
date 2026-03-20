@@ -4,10 +4,6 @@ A structured investment research framework for AI coding agents. Produces action
 
 Built for [OpenClaw](https://github.com/nicepkg/openclaw) and [Claude Code](https://docs.anthropic.com/en/docs/claude-code). Works with any AI agent that reads skill files.
 
-## See It Live
-
-8+ investment reports generated with this framework. See the research process in action at [@lobster_kk](https://x.com/lobster_kk) and [lobster-kelvink.vercel.app](https://lobster-kelvink.vercel.app/).
-
 ## What Makes This Different
 
 | Feature | Generic AI research | Lobster Investment Research |
@@ -94,6 +90,7 @@ lobster-investment-research/
 │   └── red-team-checklist.md
 └── scripts/
     ├── setup.sh             ← Quick setup — copies config template
+    ├── fetch_data.py        ← Data fetcher (DeFiLlama, CoinGecko, Yahoo)
     └── README.md            ← Script documentation
 ```
 

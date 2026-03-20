@@ -11,11 +11,18 @@ chmod +x scripts/setup.sh
 
 If `config.json` already exists, the script exits without overwriting. Delete the existing config to re-run.
 
-## Adding Custom Scripts
+## fetch_data.py
 
-This directory is a good place for:
-- Data fetching scripts (custom API wrappers)
-- Report formatting tools
-- Watchlist monitoring automations
+Data fetcher wrapping free APIs (DeFiLlama, CoinGecko, Yahoo Finance). No dependencies beyond Python 3 standard library.
+
+```bash
+python scripts/fetch_data.py defi aave          # DeFiLlama protocol data
+python scripts/fetch_data.py crypto bitcoin      # CoinGecko coin data
+python scripts/fetch_data.py stock AAPL          # Yahoo Finance quote
+python scripts/fetch_data.py fees aave           # DeFiLlama fees/revenue
+python scripts/fetch_data.py yields aave         # DeFiLlama yield pools
+```
+
+## Adding Custom Scripts
 
 Keep scripts self-contained and document dependencies.

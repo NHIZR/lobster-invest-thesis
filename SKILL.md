@@ -1,22 +1,17 @@
 ---
 name: lobster-investment-research
-version: 1.0.0
-description: "Sharp, no-BS investment research framework with multi-perspective debate, technicals, and sentiment. Fast conviction, bullet-point clarity, source-backed claims. Use when asked to analyze a stock, crypto token, DeFi protocol, or any investment target."
+description: "Structured investment research framework producing actionable memos with kill conditions, valuation, and Devil's Advocate debate. Use when analyzing stocks, crypto tokens, DeFi protocols, or any investment target. Triggers on: 'analyze $TICKER', 'should I buy', 'investment thesis', 'due diligence', 'deep dive on', 'research this stock/token', 'what do you think about $X as an investment', 'investment memo', or any request for investment analysis — even casual ones like 'is $X worth buying' or 'look into $TICKER for me'."
 metadata:
   trigger: "investment research, analyze $TICKER, deep dive, thesis, should I buy, investment memo, due diligence"
-  author: KK (@lobster_kk)
-  homepage: https://github.com/NHIZR/lobster-investment-research
   category: data-fetching-analysis
   requires:
     web_search: "Search engine access for live data"
     web_fetch: "URL fetching for source verification"
 ---
 
-# Lobster Investment Research 📊
+# Lobster Investment Research
 
-**Direct. Sharp. Source-backed.**
-
-A structured investment research framework that produces actionable memos with kill conditions. Covers stocks, crypto, DeFi protocols, and pre-token projects.
+Produce actionable investment memos with kill conditions. Cover stocks, crypto, DeFi protocols, and pre-token projects.
 
 **Core principle**: Good analysis is falsifiable. Great analysis tells you exactly when you're wrong.
 
@@ -41,26 +36,13 @@ Decision: Go / No-Go / Watch
 
 ## Configuration
 
-On first use, copy `config.example.json` → `config.json` and fill in your preferences. Or run:
-
-```bash
-chmod +x scripts/setup.sh && ./scripts/setup.sh
-```
-
-Key settings:
-- **`preferred_lenses`** — Which of the 6 investment lenses you use most
-- **`edge_definitions`** — Your personal Edge (what gives you an advantage)
-- **`report_path`** — Where to save completed reports
-- **`watchlist`** — Tickers/tokens you track regularly
-- **`data_sources`** — API keys for CoinGecko, Etherscan, etc.
-
-If `config.json` exists, don't ask again. Just use it.
+On first use, read `config.json` from this skill folder. If missing, copy `config.example.json` → `config.json` and walk the user through setup. If `config.json` exists, use it silently.
 
 ---
 
 ## The Six Lenses
 
-Pick 2-3 that fit the target. Using all six is a sign you don't know what matters. Full descriptions in `references/six-lenses.md`.
+Select 2-3 lenses that fit the target. Using all six signals lack of focus. Read `references/six-lenses.md` for full descriptions and kill signals.
 
 | # | Lens | Archetype | Best For |
 |---|------|-----------|----------|
@@ -77,36 +59,35 @@ Pick 2-3 that fit the target. Using all six is a sign you don't know what matter
 
 ### Step 0: Edge Check
 
-Before writing anything, answer: **Does this target relate to my Edge?**
-
-Your Edge is defined in `config.json` → `edge_definitions`. If you haven't defined one yet, see `references/edge-framework.md`.
+Check `config.json` → `edge_definitions` for the user's defined edges. If none defined, see `references/edge-framework.md`.
 
 ```
 Edge match: [Yes — which edge / No]
-If no edge → Write the report, but conclusion defaults to "Watch" not "Go"
+If no edge → Write the report, but default conclusion to "Watch" not "Go"
 If edge matches → Flag it in TL;DR
 ```
 
-### Step 1: Find The Forces (10 min)
+### Step 1: Find The Forces
 
-- What 1-3 things will make or break this investment?
-- What does the current price assume?
-- Why might I be wrong?
+Identify 1-3 forces that will make or break this investment. Answer:
+- What assumptions does the current price embed?
+- Why might those assumptions be wrong?
 
-### Step 2: Stress-Test (15 min)
+### Step 2: Stress-Test
 
-For each force, map three scenarios (bull/bear/base). Probability-weight them.
+For each force, map three scenarios (bull/bear/base). Assign probability weights.
 
-### Step 3: Write The Memo (30 min)
+### Step 3: Write The Memo
 
-See `references/report-template.md` for the full template and output requirements.
+Follow `references/report-template.md` for the full template and output requirements.
 
 ---
 
 ## Devil's Advocate
 
-**Required in every report.** Full guide in `references/devils-advocate.md`.
+Include in every report. Follow `references/devils-advocate.md` for the full execution guide.
 
+Attack the thesis from three perspectives:
 1. **Burry (Contrarian)** — Where is the crowd wrong? What downside is nobody pricing?
 2. **Graham (Safety Margin)** — Conservative liquidation value? Management selling at highs?
 3. **Druckenmiller (Macro Cycle)** — Where in the cycle? Liquidity helping or hurting?
@@ -115,30 +96,19 @@ See `references/report-template.md` for the full template and output requirement
 
 ## Evidence Standards
 
-Every claim needs a link. See `references/evidence-standards.md` for the full source hierarchy and verification checklist.
+Back every claim with a link. Follow `references/evidence-standards.md` for the source hierarchy and verification checklist.
 
 ---
 
 ## Technical Snapshot & Sentiment Pulse
 
-Include in every report when data is available. See `references/data-sources.md` for indicator definitions and data sources.
+Include both sections in every report when data is available. Use `references/data-sources.md` for indicator definitions and data endpoints.
 
 ---
 
-## Free Data Sources
+## Data Sources
 
-No API keys needed for most. Full list with code snippets in `references/data-sources.md`.
-
-| Source | Covers | Rate Limit |
-|--------|--------|------------|
-| DeFiLlama | TVL, revenue, fees, yields | No key needed |
-| CoinGecko | Crypto prices, market caps | 10-30 calls/min free |
-| Yahoo Finance | Stock quotes, charts | Unofficial, reliable |
-| StockAnalysis.com | Financials, fundamentals | Web scraping |
-| Etherscan | On-chain token data | 5 calls/sec free |
-| Dune Analytics | Custom on-chain queries | 2,500 credits/month free |
-| Token Terminal | Protocol financials | Free tier available |
-| TradingView | Technical charts | Browser-based |
+Use `scripts/fetch_data.py` for quick data pulls (DeFiLlama, CoinGecko, Yahoo Finance — no API key needed). See `references/data-sources.md` for the full list with additional endpoints and rate limits.
 
 ---
 
@@ -192,7 +162,7 @@ Target average: ≥7.5
 
 ## Red Team Checklist
 
-Before finalizing any report. See `references/red-team-checklist.md`.
+Run before finalizing any report. See `references/red-team-checklist.md` for the full checklist.
 
 - [ ] Strongest bear case articulated?
 - [ ] Kill conditions specific and measurable?
@@ -203,27 +173,10 @@ Before finalizing any report. See `references/red-team-checklist.md`.
 
 ---
 
-## Time Budget
-
-**Total: 60-90 minutes**
-- Force identification: 10 min
-- Research & sources: 20 min
-- Writing: 30 min
-- Red team & review: 10-20 min
-
-If you can't form conviction in 90 minutes, pass.
-
----
-
 ## File Structure
 
 See `README.md` for the full directory layout and installation instructions.
 
 ---
-
-## Version
-
-- **Current**: 1.0.0
-- **Lineage**: Built from the private research framework behind [@lobster_kk](https://x.com/lobster_kk)
 
 **The bottom line**: Good research tells you what to buy. This framework tells you exactly when you're wrong.

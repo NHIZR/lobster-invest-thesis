@@ -1,25 +1,15 @@
 {
   "schema_version": "1.0",
-  "preferred_lenses": ["quality_compounder", "imaginative_growth", "macro_tactical"],
+  "preferred_lenses": ["quality_compounder", "imaginative_growth"],
   "edge_definitions": [
     {
-      "name": "Geopolitical Mispricing",
-      "description": "Markets overreact to geopolitical threats. Strait of Hormuz never closed, Taiwan Strait never escalated — but fear gets priced in every time. Mean reversion opportunity when others panic.",
-      "trigger": "Geopolitical crisis drives selloff beyond fundamental impact"
-    },
-    {
-      "name": "Second-Order Causation",
-      "description": "Don't watch the event. Watch who gains power from the event, what they'll do, and how that shifts supply/demand.",
-      "trigger": "Major political or regulatory change"
-    },
-    {
-      "name": "Catalyst Window",
-      "description": "Improving fundamentals are necessary. A near-term catalyst (earnings, conference, policy) is sufficient. Both at once = optimal entry.",
-      "trigger": "Fundamental improvement + upcoming catalyst within 30 days"
+      "name": "Your Edge Name",
+      "description": "Describe the repeatable pattern where your analysis beats the market's default pricing. See references/edge-framework.md for guidance.",
+      "trigger": "Specific conditions that activate this edge"
     }
   ],
   "report_path": "~/investment-research/reports/",
-  "watchlist": ["AAPL", "NVDA", "BTC", "ETH", "AAVE"],
+  "watchlist": ["AAPL", "BTC", "ETH"],
   "data_sources": {
     "coingecko": {
       "api_key": null,
