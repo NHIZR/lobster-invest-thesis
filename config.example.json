@@ -1,0 +1,47 @@
+{
+  "preferred_lenses": ["quality_compounder", "imaginative_growth", "macro_tactical"],
+  "edge_definitions": [
+    {
+      "name": "Example: Geopolitical Mispricing",
+      "description": "Markets overreact to geopolitical threats. Strait of Hormuz never closed, Taiwan Strait never escalated — but fear gets priced in every time. Mean reversion opportunity when others panic.",
+      "trigger": "Geopolitical crisis drives selloff beyond fundamental impact"
+    },
+    {
+      "name": "Example: Second-Order Causation",
+      "description": "Don't watch the event. Watch who gains power from the event, what they'll do, and how that shifts supply/demand.",
+      "trigger": "Major political or regulatory change"
+    },
+    {
+      "name": "Example: Catalyst Window",
+      "description": "Improving fundamentals are necessary. A near-term catalyst (earnings, conference, policy) is sufficient. Both at once = optimal entry.",
+      "trigger": "Fundamental improvement + upcoming catalyst within 30 days"
+    }
+  ],
+  "report_path": "~/investment-research/reports/",
+  "watchlist": ["AAPL", "NVDA", "BTC", "ETH", "AAVE"],
+  "data_sources": {
+    "coingecko": {
+      "api_key": null,
+      "note": "Free tier works (10-30 calls/min). Add pro key for higher limits."
+    },
+    "etherscan": {
+      "api_key": null,
+      "note": "Free tier: 5 calls/sec. Get key at etherscan.io/apis"
+    },
+    "defillama": {
+      "note": "No API key needed"
+    }
+  },
+  "language": "en",
+  "format": {
+    "prefer_bullets": true,
+    "tables_for_numbers_only": true,
+    "max_report_chars": 20000,
+    "source_links_required": true
+  },
+  "irr_hurdles": {
+    "stock_long": 15,
+    "stock_short": 20,
+    "crypto_long": 50
+  }
+}
